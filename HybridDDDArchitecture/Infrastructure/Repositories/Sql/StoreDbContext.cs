@@ -24,9 +24,10 @@ namespace Infrastructure.Repositories.Sql
             base.OnConfiguring(optionsBuilder);
         }
 
+        public DbSet<Automovil> Automoviles { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<DummyEntity>().ToTable("DummyEntity");
+            modelBuilder.Entity<Automovil>().ToTable("Automovil");
         }
     }
 }
