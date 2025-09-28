@@ -6,7 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure.Repositories.Sql
+namespace Application.Repositories
 {
     public interface IAutomovilRepository : IRepository<Automovil> { }
+
 }

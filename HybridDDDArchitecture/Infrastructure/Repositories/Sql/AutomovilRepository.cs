@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Core.Infraestructure.Repositories.Sql;
+using Application.Repositories;
 
 namespace Infrastructure.Repositories.Sql
 {
@@ -13,3 +14,4 @@ namespace Infrastructure.Repositories.Sql
         public AutomovilRepository(StoreDbContext context) : base(context) { }
     }
 }
+
