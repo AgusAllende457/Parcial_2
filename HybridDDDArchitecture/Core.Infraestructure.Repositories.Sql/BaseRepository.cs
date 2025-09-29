@@ -76,11 +76,16 @@ namespace Core.Infraestructure.Repositories.Sql
         {
             TEntity foundEntity = FindOne(id);
 
-            if(foundEntity!=null)
+            if (foundEntity != null)
             {
                 Repository.Update(entity);
                 Context.SaveChanges();
             }
         }
+        public IQueryable<TEntity> Query()
+        {
+            return Context.Set<TEntity>();
+        }
     }
 }
+    
