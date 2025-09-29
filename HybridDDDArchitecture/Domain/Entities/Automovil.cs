@@ -1,10 +1,10 @@
 ﻿using Core.Domain.Entities;
-using Domain.Validators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.Validators;
 
 namespace Domain.Entities
 {
@@ -16,22 +16,24 @@ namespace Domain.Entities
         public int Fabricacion { get; private set; }
         public string NumeroMotor { get; private set; }
         public string NumeroChasis { get; private set; }
-        public string CodigoInterno { get; private set; }
-        protected Automovil() { }
-        public Automovil(string marca, string modelo, int fabricacion, string
-       numeroMotor, string numeroChasis)
+        protected Automovil()
+        {
+        }
+        public Automovil(string marca, string modelo, string color, int fabricacion,
+       string numeroMotor, string numeroChasis)
         {
             Marca = marca;
             Modelo = modelo;
+            Color = color;
             Fabricacion = fabricacion;
             NumeroMotor = numeroMotor;
-            NumeroChasis = numeroChasis;
-            CodigoInterno = GenerarCodigoInterno(marca, modelo);
+            NumeroChasis = GenerarNumeroChasis(modelo, color);
         }
-        private string GenerarCodigoInterno(string marca, string modelo)
+        private string GenerarNumeroChasis(string modelo, string color)
         {
-            return $"{marca.Substring(0, 3).ToUpper()}-{modelo.Substring(0,
-           3).ToUpper()}-{DateTime.Now:yyyyMMddHHmmss}";
+            var sufijo = Guid.NewGuid().ToString("N").Substring(0, 6);
+            return $"CHS-{modelo.Substring(0, 3).ToUpper()}-{color.Substring(0, 3).ToUpper()}-{DateTime.Now:yyyyMMddHHmmss}-{sufijo}";
         }
     }
+
 }
